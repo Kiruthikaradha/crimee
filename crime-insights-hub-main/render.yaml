@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: crimevision-backend
+    env: docker
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: crimevision-db
+          property: connectionString
+      - key: PYTHONPATH
+        value: .
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: JWT_ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "60"
+      - key: APP_ADMIN_USERNAME
+        value: admin
+      - key: APP_ADMIN_PASSWORD
+        value: admin123
+
+databases:
+  - name: crimevision-db
+    plan: free

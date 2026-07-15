@@ -38,3 +38,19 @@ npm run dev
 - Frontend: Vercel
 - Backend: Render
 - Database: PostgreSQL
+
+### Deploying the Backend to Render
+1. Push this repository to GitHub or GitLab.
+2. Sign in to your [Render Dashboard](https://dashboard.render.com).
+3. Click **New +** and select **Blueprint**.
+4. Connect your GitHub repository.
+5. Render will automatically parse the `render.yaml` file, creating:
+   - A PostgreSQL database (`crimevision-db`)
+   - A Web Service (`crimevision-backend`) running on Docker
+6. Click **Apply** to deploy the services. The database will automatically initialize and seed itself on startup.
+
+### Deploying the Frontend to Vercel
+1. Set up a new project on Vercel and connect your repository.
+2. Configure Vercel to build the project.
+3. In Vercel, set the environment variable:
+   - `VITE_API_BASE_URL`: Set this to your deployed Render service URL (e.g. `https://crimevision-backend.onrender.com`).
